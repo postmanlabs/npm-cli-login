@@ -28,4 +28,4 @@ build/Release
 node_modules/
 
 # Intellij Idea
-.idea/*
+.idea/

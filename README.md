@@ -13,7 +13,7 @@ Use -g flag to use npm-cli-login via the CLI
 
 ##### CLI
 
-``` npm-cli-login ``` expects the following environment variables to be set before you can use it to authenticate:
+```npm-cli-login``` expects the following environment variables to be set before you can use it to authenticate:
 
 - `NPM_USER`: NPM username
 - `NPM_PASS`: NPM password
@@ -38,9 +38,9 @@ There is also support for command line arguments:
 - ```-s```: NPM Scope
 - ```--quotes```: Set to ```false``` by default. Specifies wheather your auth token requires quotes. This might required when your auth token has special characters, like ```=```, ```?``` etc.
 
-For example: ``` npm-cli-login -u testUser -p testPass -e test@example.com ```
+For example: ```npm-cli-login -u testUser -p testPass -e test@example.com```
 
-Or: ``` npm-cli-login -u testUser -p testPass -e test@example.com -r https://private.npm.com -s @privateNPM --quotes ```
+Or: ```npm-cli-login -u testUser -p testPass -e test@example.com -r https://private.npm.com -s @privateNPM --quotes```
 
 Do note that at least one of the two ways must be configured, that is, you must either provide the required fields (username, password and email) using the environment variables or the command line arguments (or both)
 
