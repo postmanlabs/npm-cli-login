@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "npm-cli-login": "./bin/login.js"
+    "npm-cli-login": "./bin/npm-cli-login.js"
   },
   "repository": {
     "type": "git",
