@@ -1,28 +1,62 @@
 #!/usr/bin/env node
 
-var getArg = function (marker, isBoolean) {
-  var pos = process.argv.indexOf(marker)
-  return (pos === -1) ? -1 : (isBoolean ? pos : pos+1);
-}
-
 var login = function () {
-    var found = getArg('-u', false);
-    var user = (found === -1) ? process.env.NPM_USER : process.argv[found];
+    var found = false;
+    var user = process.argv.find(function (element) {
+        if (found) {
+            return true;
+        }
+        if (element === '-u') {
+            found = true;
+        }
+    }) || process.env.NPM_USER;
 
-    found = getArg('-p', false);
-    var pass = (found === -1) ? process.env.NPM_PASS : process.argv[found];
+    found = false;
+    var pass = process.argv.find(function (element) {
+        if (found) {
+            return true;
+        }
+        if (element === '-p') {
+            found = true;
+        }
+    }) || process.env.NPM_PASS;
 
-    found = getArg('-e', false);
-    var email = (found === -1) ? process.env.NPM_EMAIL : process.argv[found];
+    found = false;
+    var email = process.argv.find(function (element) {
+        if (found) {
+            return true;
+        }
+        if (element === '-e') {
+            found = true;
+        }
+    }) || process.env.NPM_EMAIL;
 
-    found = getArg('-r', false);
-    var registry = (found === -1) ? process.env.NPM_REGISTRY : process.argv[found];
+    found = false;
+    var registry = process.argv.find(function (element) {
+        if (found) {
+            return true;
+        }
+        if (element === '-r') {
+            found = true;
+        }
+    }) || process.env.NPM_REGISTRY;
 
-    found = getArg('-s', false);
-    var scope = (found === -1) ? process.env.NPM_SCOPE : process.argv[found];
+    found = false;
+    var scope = process.argv.find(function (element) {
+        if (found) {
+            return true;
+        }
+        if (element === '-s') {
+            found = true;
+        }
+    }) || process.env.NPM_SCOPE;
 
-    found = getArg('--quotes', true);
-    var quotes = (found === -1) ? false : true;
+    found = false;
+    var quotes = process.argv.find(function (element) {
+        if (element === '--quotes') {
+            return true;
+        }
+    }) || false;
 
     require('../')(user, pass, email, registry, scope, quotes);
 };
