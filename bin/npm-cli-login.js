@@ -21,10 +21,13 @@ var login = function () {
     found = getArg('-s', false);
     var scope = (found === -1) ? process.env.NPM_SCOPE : process.argv[found];
 
+    found = getArg('--config-path', false);
+    var configPath = (found === -1) ? process.env.CONFIG_PATH : process.argv[found];
+
     found = getArg('--quotes', true);
     var quotes = (found === -1) ? false : true;
 
-    require('../')(user, pass, email, registry, scope, quotes);
+    require('../')(user, pass, email, registry, scope, quotes, configPath);
 };
 
 login();
