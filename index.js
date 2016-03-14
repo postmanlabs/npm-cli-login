@@ -1,1 +1,1 @@
-module.exports = require('./lib/login.js');
+module.exports = require('./lib');
