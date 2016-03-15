@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-var config = loginScript('../lib/login').getConfig()
+var config = require('../lib/login').getConfig();
 
 var getArg = function (marker, isBoolean) {
     var pos = process.argv.indexOf(marker);
