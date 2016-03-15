@@ -1,7 +1,8 @@
 var ncl = require('../lib/login.js'),
     nclWrapper = require('../lib'),
     expect = require('chai').expect,
-    path = require('path')
+    path = require('path'),
+    fs = require('fs');
 
 describe('Can handle', function () {
   it('missing username', function () {
@@ -196,3 +197,27 @@ describe('Can login to default registry', function () {
     })
   });
 });
+
+describe('Can use .nclrc', function () {
+  before(function (done) {
+    fs.writeFile(path.resolve('./.nclrc'), JSON.stringify({
+      user: "test",
+      pass: "test",
+      email: "test@test.com"
+    }, null, 2), done)
+  })
+
+  it('to read username, password, and email', function () {
+    var args = ncl.getConfig()
+    expect(args).to.have.property('user', 'test')
+    expect(args).to.have.property('pass', 'test')
+    expect(args).to.have.property('email', 'test@test.com')
+  })
+
+  it('for precedence over environment variables', function () {
+    var args = ncl.getConfig()
+    expect(args).to.have.property('user', 'test')
+    expect(args).to.have.property('pass', 'test')
+    expect(args).to.have.property('email', 'test@test.com')
+  })
+})
