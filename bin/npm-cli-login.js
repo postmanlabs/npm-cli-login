@@ -22,7 +22,7 @@ var login = function () {
     var scope = (found === -1) ? process.env.NPM_SCOPE : process.argv[found];
 
     found = getArg('--config-path', false);
-    var configPath = (found === -1) ? process.env.NPM_CONFIG_PATH : process.argv[found];
+    var configPath = (found === -1) ? process.env.NPM_RC_PATH : process.argv[found];
 
     found = getArg('--quotes', true);
     var quotes = (found === -1) ? false : true;
