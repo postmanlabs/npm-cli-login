@@ -198,7 +198,7 @@ describe('Can login to default registry', function () {
   });
 });
 
-describe('Can use .nclrc', function () {
+describe.only('Can use .nclrc', function () {
   before(function (done) {
     fs.writeFile(path.resolve('./.nclrc'), JSON.stringify({
       user: "test",
@@ -209,6 +209,7 @@ describe('Can use .nclrc', function () {
 
   it('to read username, password, and email', function () {
     var args = ncl.getConfig()
+    console.log(args)
     expect(args).to.have.property('user', 'test')
     expect(args).to.have.property('pass', 'test')
     expect(args).to.have.property('email', 'test@test.com')
