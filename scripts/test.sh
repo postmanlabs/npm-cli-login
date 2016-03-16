@@ -9,3 +9,5 @@ echo;
 jshint --version;
 jshint lib bin;
 echo "No code lint issues found.";
+
+mocha tests
