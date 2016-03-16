@@ -11,7 +11,6 @@
     "url": "git+https://github.com/postmanlabs/npm-cli-login.git"
   },
   "scripts": {
-    "start": "./bin/npm-cli-login.js",
     "test": "./scripts/test.sh"
   },
   "author": "Postman Team <help@getpostman.com>",
