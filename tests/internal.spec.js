@@ -205,7 +205,7 @@ describe('Can login to default registry', function () {
   });
 });
 
-describe('Can use .nclrc', function () {
+describe.skip('Can use .nclrc', function () {
   before(function (done) {
     fs.writeFile(path.resolve('./.nclrc'), JSON.stringify({
       user: "test",
