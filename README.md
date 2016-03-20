@@ -5,9 +5,10 @@ Also creates/modifies entries in the ~/.npmrc file for authentication.
 
 ### Installation
 
-    npm install -g npm-cli-login
+    npm install npm-cli-login
 
-Use -g flag to use npm-cli-login via the CLI
+Using the -g flag isn't necessary when you run via NPM
+(NPM automatically passes the project scope to all commands)
 
 ### Usage
 
@@ -43,6 +44,9 @@ You can also specify all configurations in a config file called `.nclrc` stored 
   "path": <custom .npmrc path>
 }
 ```
+
+Do note that if you installed `npm-cli-login` globally, the Config file may not work.
+The best way around it is to install `npm-cli-login` locally and use NPM scripts to run it. The project scope is automatically passed. More information [here](https://docs.npmjs.com/misc/scripts)
 
 ###### Environment variables
 When using this method, the CLI expects the following environment variables to be set::
