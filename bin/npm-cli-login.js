@@ -4,7 +4,7 @@ var config = require('../lib/login').getConfig();
 
 var getArg = function (marker, isBoolean) {
     var pos = process.argv.indexOf(marker);
-    return (pos === -1) ? -1 : (isBoolean ? pos : pos + 1);
+    return (pos === -1) ? -1 : (isBoolean ? pos : (pos + 1));
 };
 
 var login = function () {
