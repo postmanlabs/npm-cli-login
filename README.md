@@ -5,7 +5,7 @@ Also creates/modifies entries in the ~/.npmrc file for authentication.
 
 ### Installation
 
-    npm install npm-cli-login
+    npm install npm-cli-login -g
 
 Using the -g flag isn't necessary when you run via NPM
 (NPM automatically passes the project scope to all commands)
