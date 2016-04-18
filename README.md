@@ -14,36 +14,41 @@ Using the -g flag isn't necessary when you run via NPM
 
 ##### CLI
 
-The CLI provides three ways to authenticate:
+The CLI provides two ways to authenticate:
+
+###### Environment Variables
+
+`npm-cli-login` expects the following environment variables to be set before you can use it to authenticate:
+
+- `NPM_USER`: NPM username
+- `NPM_PASS`: NPM password
+- `NPM_EMAIL`: NPM email
+- `NPM_REGISTRY`: (optional) Private NPM registry to log in to (Default: https://registry.npmjs.org)
+- `NPM_SCOPE`: (optional) Private NPM scope
+- `NPM_RC_PATH`: (optional) Path to a custom .npmrc file you want to update (Default: `~/`)  (Do note this is the path of the file, not the file itself)
+
+Once the required ones are set, you can just run the following to log in:
+
+    npm-cli-login
+
+You can also export variables and run it all in one line:
+
+    NPM_USER=testUser NPM_PASS=testPass NPM_EMAIL=test@example.com npm-cli-login
 
 ###### Command Line Arguments
 There is also support for command line arguments:
 
-- ```-u```: NPM Username
-- ```-p```: NPM Password
-- ```-e```: NPM Email
-- ```-r```: NPM Registry
-- ```-s```: NPM Scope
-- ```--quotes```: Set to ```false``` by default. Specifies wheather your auth token requires quotes. This might required when your auth token has special characters, like ```=```, ```?``` etc.
-- ```--config-path```: Path to a custom .npmrc file you want to modify (Default: `~/`)
+- `-u`: NPM Username
+- `-p`: NPM Password
+- `-e`: NPM Email
+- `-r`: NPM Registry
+- `-s`: NPM Scope
+- `--quotes`: Set to `false` by default. Specifies whether your auth token requires quotes. This might required when your auth token has special characters, like `=`, `?` etc.
+- `--config-path`: Set to `~/` by default. Can be used to configure a custom .npmrc file to edit (Do note this is the path of the file, not the file itself)
 
 For example: ```npm-cli-login -u testUser -p testPass -e test@example.com```
 
-Or: ```npm-cli-login -u testUser -p testPass -e test@example.com -r https://private.npm.com -s @privateNPM --quotes```
-
-###### Configuration File
-You can also specify all configurations in a config file called `.nclrc` stored in the root of your project. This file must be a JSON (comments allowed), and may have the following options:
-```
-{
-  "user": <NPM username>,
-  "password": <NPM password>,
-  "email": <NPM email>,
-  "registry": <registry>
-  "scope": <scope>,
-  "quotes": <true/false>,
-  "path": <custom .npmrc path>
-}
-```
+Or: ```npm-cli-login -u testUser -p testPass -e test@example.com -r https://private.npm.com -s @privateNPM --quotes --config-path="./custom/path/"```
 
 Do note that if you installed `npm-cli-login` globally, the Config file may not work.
 The best way around it is to install `npm-cli-login` locally and use NPM scripts to run it. The project scope is automatically passed. More information [here](https://docs.npmjs.com/misc/scripts)
@@ -77,7 +82,7 @@ Do note that at least one of the three ways must be configured, that is, you mus
 To use the package programmatically, just require the module and pass in your NPM auth details as arguments:
 
     var npmLogin = require('npm-cli-login');
-    npmLogin(username, password, email [, registry, scope, quotes]);
+    npmLogin(username, password, email [, registry, scope, quotes, configPath]);
 
 ##### Example
 
@@ -101,7 +106,8 @@ var npmLogin = require('npm-cli-login'),
     email = 'test@example.com',
     registry = 'https://npm.example.com',
     scope = '@myScope',
-    quotes = false
+    quotes = false,
+    configPath: './custom/path/'
 
-npmLogin(username, password, email, registry, scope)
+npmLogin(username, password, email, registry, scope, configPath)
 ```
