@@ -99,95 +99,106 @@ describe('Can generate', function () {
   it('file with default registry but no scope', function () {
     this.timeout(5000)
     var args = ncl.processArguments(testData.username, testData.password, testData.email);
-    var toWrite = ncl.generateFileContents(args, '', testData.response);
-    expect(toWrite).to.have.length(1)
-    expect(toWrite).to.include('//registry.npmjs.org/:_authToken=test');
+    ncl.generateFileContents(args, '', testData.response, function  (err, toWrite) {
+      expect(toWrite).to.have.length(1);
+      expect(toWrite).to.include('//registry.npmjs.org/:_authToken=test');
+    });
   });
 
   it('file with default registry and custom scope', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, undefined, testData.scope);
-    var toWrite = ncl.generateFileContents(args, '', testData.response);
-    expect(toWrite).to.have.length(2)
-    expect(toWrite).to.include('//registry.npmjs.org/:_authToken=' + testData.response.token);
-    expect(toWrite).to.include(testData.scope + ':registry=https://registry.npmjs.org');
+    ncl.generateFileContents(args, '', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(2);
+      expect(toWrite).to.include('//registry.npmjs.org/:_authToken=' + testData.response.token);
+      expect(toWrite).to.include(testData.scope + ':registry=https://registry.npmjs.org');
+    });
   });
 
   it('file with custom registry but no scope', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, testData.registry);
-    var toWrite = ncl.generateFileContents(args, '', testData.response);
-    expect(toWrite).to.have.length(1)
-    expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
+    ncl.generateFileContents(args, '', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(1);
+      expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
+    });
   });
 
   it('file with custom registry and custom scope', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, testData.registry, testData.scope);
-    var toWrite = ncl.generateFileContents(args, '', testData.response);
-    expect(toWrite).to.have.length(2)
-    expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
-    expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    ncl.generateFileContents(args, '', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(2);
+      expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
+      expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    });
   });
 });
 
 describe('Can append to', function () {
   it('file with default registry but no scope', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email);
-    var toWrite = ncl.generateFileContents(args, 'oldData', testData.response);
-    expect(toWrite).to.have.length(2);
-    expect(toWrite).to.include('oldData');
-    expect(toWrite).to.include('//registry.npmjs.org/:_authToken=' + testData.response.token);
+    ncl.generateFileContents(args, 'oldData', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(2);
+      expect(toWrite).to.include('oldData');
+      expect(toWrite).to.include('//registry.npmjs.org/:_authToken=' + testData.response.token);
+    });
   });
 
   it('file with default registry and custom scope', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, undefined, testData.scope);
-    var toWrite = ncl.generateFileContents(args, 'oldData', testData.response);
-    expect(toWrite).to.have.length(3);
-    expect(toWrite).to.include('oldData');
-    expect(toWrite).to.include('//registry.npmjs.org/:_authToken=' + testData.response.token);
-    expect(toWrite).to.include(testData.scope + ':registry=https://registry.npmjs.org');
+    ncl.generateFileContents(args, 'oldData', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(3);
+      expect(toWrite).to.include('oldData');
+      expect(toWrite).to.include('//registry.npmjs.org/:_authToken=' + testData.response.token);
+      expect(toWrite).to.include(testData.scope + ':registry=https://registry.npmjs.org');
+    });
   });
 
   it('file with custom registry but no scope', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, testData.registry);
-    var toWrite = ncl.generateFileContents(args, 'oldData', testData.response);
-    expect(toWrite).to.have.length(2);
-    expect(toWrite).to.include('oldData');
-    expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
+    ncl.generateFileContents(args, 'oldData', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(2);
+      expect(toWrite).to.include('oldData');
+      expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
+    });
   });
 
   it('file with custom registry and custom scope', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, testData.registry, testData.scope);
-    var toWrite = ncl.generateFileContents(args, 'oldData', testData.response);
-    expect(toWrite).to.have.length(3);
-    expect(toWrite).to.include('oldData');
-    expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
-    expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    ncl.generateFileContents(args, 'oldData', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(3);
+      expect(toWrite).to.include('oldData');
+      expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
+      expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    });
   });
 
   it('file with existing auth token', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, testData.registry, testData.scope);
-    var toWrite = ncl.generateFileContents(args, '//npm.random.com/:_authToken=test', testData.response2);
-    expect(toWrite).to.have.length(2);
-    expect(toWrite).to.not.include('//npm.random.com/:_authToken=' + testData.response.token);
-    expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response2.token);
-    expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    ncl.generateFileContents(args, '//npm.random.com/:_authToken=test', testData.response2, function (err, toWrite) {
+      expect(toWrite).to.have.length(2);
+      expect(toWrite).to.not.include('//npm.random.com/:_authToken=' + testData.response.token);
+      expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response2.token);
+      expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    });
   });
 });
 
 describe('Can honour', function () {
   it('quotes setting set to false', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, testData.registry, testData.scope, false);
-    var toWrite = ncl.generateFileContents(args, '', testData.response);
-    expect(toWrite).to.have.length(2)
-    expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
-    expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    ncl.generateFileContents(args, '', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(2)
+      expect(toWrite).to.include('//npm.random.com/:_authToken=' + testData.response.token);
+      expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    });
   });
 
   it('quotes setting set to true', function () {
     var args = ncl.processArguments(testData.username, testData.password, testData.email, testData.registry, testData.scope, true);
-    var toWrite = ncl.generateFileContents(args, '', testData.response);
-    expect(toWrite).to.have.length(2)
-    expect(toWrite).to.include('//npm.random.com/:_authToken="' + testData.response.token + '"');
-    expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    ncl.generateFileContents(args, '', testData.response, function (err, toWrite) {
+      expect(toWrite).to.have.length(2)
+      expect(toWrite).to.include('//npm.random.com/:_authToken="' + testData.response.token + '"');
+      expect(toWrite).to.include(testData.scope + ':registry=' + testData.registry);
+    });
   });
 });
 
