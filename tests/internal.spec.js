@@ -196,7 +196,7 @@ describe('Can login to default registry', function () {
     this.timeout(5000)
     var args = ncl.processArguments(testData.username, testData.password, testData.email);
     ncl.login(args, function (err, data) {
-      expect(err).to.have.property('statusCode', 400);
+      expect(err).to.have.property('statusCode', 401);
       done();
     })
   });
