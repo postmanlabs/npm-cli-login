@@ -53,6 +53,8 @@ To use the package programmatically, just require the module and pass in your NP
     var npmLogin = require('npm-cli-login');
     npmLogin(username, password, email [, registry, scope, quotes, configPath]);
 
+The function returns a Promise. 
+
 ##### Example
 
 Logging in to the NPM registry:
@@ -63,7 +65,11 @@ var npmLogin = require('npm-cli-login'),
     password = 'testPass',
     email = 'test@example.com'
 
-npmLogin(username, password, email)
+npmLogin(username, password, email).then(() => {
+    console.log('Successful login');
+}).catch(err => {
+    console.log(err);
+});
 ```
 
 Logging in to private NPM registries:
@@ -78,5 +84,9 @@ var npmLogin = require('npm-cli-login'),
     quotes = false,
     configPath: './custom/path/'
 
-npmLogin(username, password, email, registry, scope, configPath)
+npmLogin(username, password, email, registry, scope, configPath).then(() => {
+    console.log('Successful login');
+}).catch(err => {
+    console.log(err);
+});
 ```
