@@ -22,19 +22,19 @@ describe('Can handle', function () {
   it('missing username', function () {
     expect(function () {
       nclWrapper();
-    }).to.throw('AssertionError');
+    }).to.throw();
   });
 
   it('missing password', function () {
     expect(function () {
       nclWrapper(testData.username);
-    }).to.throw('AssertionError');
+    }).to.throw();
   });
 
   it('missing email', function () {
     expect(function () {
       nclWrapper(testData.username, testData.password);
-    }).to.throw('AssertionError');
+    }).to.throw();
   });
 });
 
