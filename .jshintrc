@@ -48,5 +48,6 @@
 
     "onevar": true,
 
-    "globals": { }
+    "globals": { },
+    "esversion": 6
 }
