@@ -22,19 +22,19 @@ describe('Can handle', function () {
   it('missing username', function () {
     expect(function () {
       nclWrapper();
-    }).to.throw();
+    }).to.throw('must include username in auth');
   });
 
   it('missing password', function () {
     expect(function () {
       nclWrapper(testData.username);
-    }).to.throw();
+    }).to.throw('must include password in auth');
   });
 
   it('missing email', function () {
     expect(function () {
       nclWrapper(testData.username, testData.password);
-    }).to.throw();
+    }).to.throw('must include email in auth');
   });
 });
 
