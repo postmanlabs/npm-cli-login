@@ -1,6 +1,6 @@
 {
   "name": "npm-cli-login",
-  "version": "0.0.10",
+  "version": "0.1.1",
   "description": "",
   "main": "index.js",
   "bin": {
@@ -11,18 +11,22 @@
     "url": "git+https://github.com/postmanlabs/npm-cli-login.git"
   },
   "scripts": {
-    "test": "./scripts/test.sh"
+    "test": "./scripts/test.sh",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "author": "Postman Team <help@getpostman.com>",
   "license": "Apache-2.0",
   "homepage": "https://github.com/postmanlabs/npm-cli-login#readme",
   "dependencies": {
-    "npm-registry-client": "7.4.1"
+    "npm-registry-client": "8.6.0",
+    "snyk": "^1.91.0"
   },
   "devDependencies": {
     "chai": "^3.5.0",
     "jscs": "^3.0.7",
     "jshint": "^2.9.1",
-    "mocha": "^3.2.0"
-  }
+    "mocha": "^5.2.0"
+  },
+  "snyk": true
 }
