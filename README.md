@@ -20,7 +20,7 @@ Use -g flag to use npm-cli-login via the CLI
 - `NPM_EMAIL`: NPM email
 - `NPM_REGISTRY`: (optional) Private NPM registry to log in to (Default: https://registry.npmjs.org)
 - `NPM_SCOPE`: (optional) Private NPM scope
-- `NPM_RC_PATH`: (optional) Path to a custom .npmrc file you want to update (Default: `~/`)  (Do note this is the path of the file, not the file itself)
+- `NPM_RC_PATH`: (optional) Path to a custom .npmrc file you want to update (Default: `~/.npmrc`)
 
 Once the required ones are set, you can just run the following to log in:
 
@@ -38,7 +38,7 @@ There is also support for command line arguments:
 - `-r`: NPM Registry
 - `-s`: NPM Scope
 - `--quotes`: Set to `false` by default. Specifies whether your auth token requires quotes. This might required when your auth token has special characters, like `=`, `?` etc.
-- `--config-path`: Set to `~/` by default. Can be used to configure a custom .npmrc file to edit (Do note this is the path of the file, not the file itself)
+- `--config-path`: Set to `~/.npmrc` by default. Can be used to configure a custom .npmrc file to edit.
 
 For example: ```npm-cli-login -u testUser -p testPass -e test@example.com```
 
