@@ -20,7 +20,7 @@
   "homepage": "https://github.com/postmanlabs/npm-cli-login#readme",
   "dependencies": {
     "npm-registry-client": "8.6.0",
-    "snyk": "^1.124.1"
+    "snyk": "^1.230.7"
   },
   "devDependencies": {
     "chai": "^3.5.0",
