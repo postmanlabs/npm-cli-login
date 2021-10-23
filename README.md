@@ -1,4 +1,4 @@
-# npm-cli-login [![Build Status](https://travis-ci.org/postmanlabs/npm-cli-login.svg?branch=master)](https://travis-ci.org/postmanlabs/npm-cli-login)
+# [Unmaintained] npm-cli-login [![Build Status](https://travis-ci.org/postmanlabs/npm-cli-login.svg?branch=master)](https://travis-ci.org/postmanlabs/npm-cli-login)
 
 Allows you to log in to NPM without STDIN, STDOUT. Use in places like CI build systems.
 Also creates/modifies entries in the ~/.npmrc file for authentication.
