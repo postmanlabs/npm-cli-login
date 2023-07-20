@@ -1,7 +1,7 @@
 {
   "name": "npm-cli-login",
   "version": "1.0.0",
-  "description": "",
+  "description": "Fork of npm-cli-login",
   "main": "index.js",
   "bin": {
     "npm-cli-login": "./bin/npm-cli-login.js"
@@ -13,9 +13,9 @@
   "scripts": {
     "test": "./scripts/test.sh"
   },
-  "author": "Postman Team <help@getpostman.com>",
+  "author": "Postman Team",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/postmanlabs/npm-cli-login#readme",
+  "homepage": "https://github.com/rajharsh1997/npm-cli-login#readme",
   "dependencies": {
     "npm-registry-client": "8.6.0"
   },
